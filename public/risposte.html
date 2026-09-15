@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Risposte — Invito Elisa</title>
+<style>
+  body { margin: 0; padding: 24px 16px 60px; background: #17121f; color: #ede8f5; font-family: system-ui, sans-serif; }
+  h1 { font-size: 20px; font-weight: 600; margin: 0 0 20px; }
+  table { width: 100%; border-collapse: collapse; font-size: 14px; }
+  th, td { text-align: left; padding: 10px 8px; border-bottom: 1px solid #3a3350; vertical-align: top; }
+  th { color: #b9a9d9; font-weight: 600; }
+  .yes { color: #8ee6a6; }
+  .no { color: #e69a9a; }
+  .empty { color: #9a8fb5; margin-top: 12px; }
+  .count { color: #b9a9d9; font-size: 13px; margin-bottom: 16px; }
+</style>
+</head>
+<body>
+<h1>Chi ha risposto</h1>
+<div id="count" class="count"></div>
+<div id="content"></div>
+
+<script>
+async function load() {
+  const contentEl = document.getElementById('content');
+  const countEl = document.getElementById('count');
+  let data;
+  try {
+    const res = await fetch('/api/rsvp');
+    data = await res.json();
+  } catch (e) {
+    contentEl.innerHTML = '<p class="empty">Errore nel caricamento delle risposte.</p>';
+    return;
+  }
+  const responses = data.responses || [];
+  if (responses.length === 0) {
+    contentEl.innerHTML = '<p class="empty">Ancora nessuna risposta.</p>';
+    countEl.textContent = '';
+    return;
+  }
+  const attending = responses.filter((r) => r.attending).length;
+  countEl.textContent = `${responses.length} risposte · ${attending} ci saranno`;
+
+  const rows = responses.map((r) => `
+    <tr>
+      <td>${escapeHtml(r.name)}</td>
+      <td class="${r.attending ? 'yes' : 'no'}">${r.attending ? 'Ci sarà' : 'Non ci sarà'}</td>
+      <td>${escapeHtml(r.message || '—')}</td>
+      <td>${new Date(r.submittedAt).toLocaleString('it-IT')}</td>
+    </tr>
+  `).join('');
+
+  contentEl.innerHTML = `
+    <table>
+      <thead><tr><th>Nome</th><th>Risposta</th><th>Messaggio</th><th>Quando</th></tr></thead>
+      <tbody>${rows}</tbody>
+    </table>
+  `;
+}
+
+function escapeHtml(str) {
+  const div = document.createElement('div');
+  div.textContent = str;
+  return div.innerHTML;
+}
+
+load();
+</script>
+</body>
+</html>

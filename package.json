@@ -1,0 +1,12 @@
+{
+  "name": "invite",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "smoke": "node scripts/smoke-rsvp.mjs"
+  },
+  "dependencies": {
+    "@upstash/redis": "^1.38.4"
+  }
+}
