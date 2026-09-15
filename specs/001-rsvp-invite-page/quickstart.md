@@ -19,7 +19,7 @@ Open `http://localhost:3000` — the invite. Open `http://localhost:3000/rispost
 
 1. Open the local URL on a 390px-wide viewport (or an actual phone).
 2. Tap the sealed moon → confirm the reveal sequence (spell typing, header, tarot cards, dress code, RSVP section) matches the source `Invito Elisa.html` exactly.
-3. Flip both tarot cards → confirm "3 ottobre 2026 · sabato · ore 21" and "Opificio · al calare del buio" appear.
+3. Flip all three tarot cards → confirm "3 ottobre 2026 · sabato · ore 21", "Opificio · al calare del buio", and "Serata emo · Monster.A.Live · Prato" appear.
 
 ## Validate User Story 2 (submit an RSVP)
 

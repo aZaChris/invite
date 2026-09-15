@@ -12,7 +12,7 @@
 
 ### User Story 1 - View the invite (Priority: P1)
 
-A guest opens the shared invite link on their phone, taps to break the seal, and scrolls through the reveal: the name, the spell text, the two tarot cards (flip to reveal the date and the place), the dress code, and the closing call to respond.
+A guest opens the shared invite link on their phone, taps to break the seal, and scrolls through the reveal: the name, the spell text, the three tarot cards (flip to reveal the date, the place, and the after-party), the dress code, and the closing call to respond.
 
 **Why this priority**: This is the entire current design and the reason the link is being shared. Nothing else matters if this breaks.
 
@@ -67,7 +67,7 @@ Elisa checks, at any time, who has responded and how — without asking each gue
 
 ### Functional Requirements
 
-- **FR-001**: The page MUST preserve the existing invite design and copy exactly as exported (seal-to-open interaction, scroll reveal sequence, tarot card flips, date "3 ottobre 2026, sabato, ore 21", place "Opificio, al calare del buio", dress code text).
+- **FR-001**: The page MUST preserve the existing invite design and copy exactly as exported (seal-to-open interaction, scroll reveal sequence, tarot card flips, date "3 ottobre 2026, sabato, ore 21", place "Opificio, al calare del buio", after-party "Serata emo, Monster.A.Live, Prato", dress code text).
 - **FR-002**: The page MUST let a guest submit an RSVP directly on the page with: name (required), attending yes/no (required), and an optional free-text message.
 - **FR-003**: The system MUST persist every submitted RSVP (name, attending, message, timestamp) so it survives after the guest closes their browser.
 - **FR-004**: The system MUST reject a submission with an empty/whitespace-only name or with no attending choice selected, and MUST NOT store rejected submissions.
